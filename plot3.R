@@ -13,7 +13,8 @@ EMI_BY_YEAR_TYPE<-aggregate(NEI_24510[, 4:4], list(NEI_24510$year, NEI_24510$typ
 # give meaningful column names
 names(EMI_BY_YEAR_TYPE) <- c("Year", "Type", "Total.Emission")
 
-ggplot(data=EMI_BY_YEAR_TYPE, aes(x=Year, y=Total.Emission, group=Type, colour=Type, shape=Type)) + geom_line() + geom_point() + xlab("Year") + ylab("Total Emission(tons)") + ggtitle("PM 2.5 Emission By Type\nIn Baltimore City, Maryland")
+p <- ggplot(data=EMI_BY_YEAR_TYPE, aes(x=Year, y=Total.Emission, group=Type, colour=Type, shape=Type)) + geom_line() + geom_point() + xlab("Year") + ylab("Total Emission(tons)") + ggtitle("PM 2.5 Emission By Type\nIn Baltimore City, Maryland")
+print(p)
 
 dev.copy(png, "plot3.png", width=640, height=480)
 dev.off()
