@@ -24,7 +24,7 @@ EMI_VEHICLE_BY_YEAR<-aggregate(NEI_24510_VEHICLE[, 4:4], list(NEI_24510_VEHICLE$
 # give meaningful column names
 names(EMI_VEHICLE_BY_YEAR) <- c("Year", "Motor.Vehicle.Emission")
 
-barplot(EMI_VEHICLE_BY_YEAR$Motor.Vehicle.Emission, names=EMI_VEHICLE_BY_YEAR$Year, xlab="Year", ylab="Motor Vehicle Emission(tons)", main="Motor Vehicle Related\nPM 2.5 Emission Over Years\nin Baltimore City, Maryland")
+barplot(EMI_VEHICLE_BY_YEAR$Motor.Vehicle.Emission, names=EMI_VEHICLE_BY_YEAR$Year, xlab="Year", ylab="Motor Vehicle Emission(tons)", main="Motor Vehicle Related\nPM 2.5 Emission Over Years\nin Baltimore City, Maryland", cex.main=0.85)
 
 dev.copy(png, "plot5.png", width=480, height=480)
 dev.off()
