@@ -12,9 +12,6 @@ EMI_BY_YEAR<-aggregate(NEI_24510[, 4:4], list(NEI_24510$year), sum)
 # give meaningful column names
 names(EMI_BY_YEAR) <- c("Year", "Total.Emission")
 
-# scale the data if you don't need scientific notation on plots
-#EMI_BY_YEAR$Total.Emission<-EMI_BY_YEAR$Total.Emission/1000
-
 barplot(EMI_BY_YEAR$Total.Emission, names=EMI_BY_YEAR$Year, xlab="Year", ylab="Total Emission(tons)", main="PM 2.5 Emission Over Years\nin Baltimore City, Maryland")
 
 dev.copy(png, "plot2.png", width=480, height=480)
