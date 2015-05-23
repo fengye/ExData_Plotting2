@@ -29,25 +29,26 @@ EMI_VEHICLE_06037_BY_YEAR<-aggregate(NEI_06037_VEHICLE[, 4:4], list(NEI_06037_VE
 names(EMI_VEHICLE_24510_BY_YEAR) <- c("Year", "Motor.Vehicle.Emission")
 names(EMI_VEHICLE_06037_BY_YEAR) <- c("Year", "Motor.Vehicle.Emission")
 
+# draw plots
+par(mar=c(5, 4, 4, 6) + 0.1)
+
+# baltimore plot
+plot(EMI_VEHICLE_24510_BY_YEAR$Year, EMI_VEHICLE_24510_BY_YEAR$Motor.Vehicle.Emission, xlab="Year", ylab="", yaxt="n", pch=16, ylim=c(0,100), col='blue', main="Motor Vehicle Related\nPM 2.5 Emission Over Years Comparison", cex.main=0.85)
+lines(EMI_VEHICLE_24510_BY_YEAR$Year, EMI_VEHICLE_24510_BY_YEAR$Motor.Vehicle.Emission, col='blue')
+mtext("Baltimore City(tons)",side=2,line=2.5)
 box()
-
-plot(EMI_VEHICLE_24510_BY_YEAR$Motor.Vehicle.Emission, xlab="", ylab="", pch=16, axes=FALSE, ylim=c(0,100), col='blue', main="Motor Vehicle Related\nPM 2.5 Emission Over Years\nin Baltimore City, Maryland", cex.main=0.85)
-lines(EMI_VEHICLE_24510_BY_YEAR$Motor.Vehicle.Emission, col='blue')
 axis(2, ylim=c(0,100),col="blue",las=1)  ## las=1 makes horizontal labels
-mtext("Motor Vehicle Emission(Baltimore City)",side=2,line=2.5)
 
-
+# draw over
 par(new=TRUE)
 
-plot(EMI_VEHICLE_06037_BY_YEAR$Motor.Vehicle.Emission, xlab="", ylab="", pch=15, axes=FALSE, ylim=c(0,1800), col='red', main="Motor Vehicle Related\nPM 2.5 Emission Over Years\nin Baltimore City, Maryland", cex.main=0.85)
-lines(EMI_VEHICLE_06037_BY_YEAR$Motor.Vehicle.Emission, col='red')
-axis(4, ylim=c(0,1800),col="red",las=1)  ## las=1 makes horizontal labels
-mtext("Motor Vehicle Emission(Los Angels)",side=4,line=4)
+# los angels plot
+plot(EMI_VEHICLE_06037_BY_YEAR$Year, EMI_VEHICLE_06037_BY_YEAR$Motor.Vehicle.Emission, xlab="", ylab="", pch=15, axes=FALSE, ylim=c(0,2000), col='red', main="", cex.main=0.85)
+lines(EMI_VEHICLE_06037_BY_YEAR$Year, EMI_VEHICLE_06037_BY_YEAR$Motor.Vehicle.Emission, col='red')
+axis(4, ylim=c(0,2000),col="red",las=1)  ## las=1 makes horizontal labels
+mtext("Los Angels(tons)",side=4,line=4)
 
-# Draw year
-axis(1, EMI_VEHICLE_24510_BY_YEAR$Year)
-mtext("Year",side=1,col="black",line=2.5)
-
+# legend
 legend("bottomleft",legend=c("Baltimore","Los Angels"),
   text.col=c("blue","red"),pch=c(16,15),col=c("black","red"))
 
